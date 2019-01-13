@@ -6,6 +6,11 @@ use App\Project;
 
 class ProjectsController extends Controller
 {
+    /**
+     * View all projects.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $projects = auth()->user()->projects;
@@ -13,6 +18,13 @@ class ProjectsController extends Controller
         return view('projects.index', compact('projects'));
     }
 
+    /**
+     * Show a single project.
+     *
+     * @param \App\Project $project
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show(Project $project)
     {
         if (auth()->user()->isNot($project->owner)) {
@@ -22,11 +34,21 @@ class ProjectsController extends Controller
         return view('projects.show', compact('project'));
     }
 
+    /**
+     * Create a new project.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('projects.create');
     }
 
+    /**
+     * Persist a new project.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         $attributes = request()->validate([
