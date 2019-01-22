@@ -1,10 +1,16 @@
 @extends ('layouts.app')
 
 @section ('content')
-    <form method="POST" action="/projects" class="lg:w-1/2 lg:mx-auto bg-white py-12 px-16 rounded shadow">
+    <form
+        method="POST"
+        action="/projects"
+        class="lg:w-1/2 lg:mx-auto bg-white md:py-12 md:px-16 rounded shadow"
+    >
         @csrf
 
-        <h1 class="text-2xl font-normal mb-10 text-center">Let's start something new</h1>
+        <h1 class="text-2xl font-normal mb-10 text-center">
+            Let's start something new
+        </h1>
 
         <div class="field mb-6">
             <label class="label text-sm mb-2 block" for="title">Title</label>
@@ -31,6 +37,7 @@
         <div class="field">
             <div class="control">
                 <button type="submit" class="button is-link mr-2">Create Project</button>
+                
                 <a href="/projects">Cancel</a>
             </div>
         </div>
