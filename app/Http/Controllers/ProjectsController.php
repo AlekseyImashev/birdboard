@@ -50,15 +50,20 @@ class ProjectsController extends Controller
      */
     public function store()
     {
-        $attributes = request()->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'notes' => 'min:3'
-        ]);
-
-        $project = auth()->user()->projects()->create($attributes);
+        $project = auth()->user()->projects()->create($this->validateRequest());
 
         return redirect($project->path());
+    }
+
+    /**
+     * Edit the project.
+     *
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Project $project)
+    {
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -72,8 +77,22 @@ class ProjectsController extends Controller
     {
         $this->authorize('update', $project);
 
-        $project->update(request(['notes']));
+        $project->update($this->validateRequest());
 
         return redirect($project->path());
+    }
+
+    /**
+     * Validate the request attributes.
+     *
+     * @return array
+     */
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'notes' => 'min:3'
+        ]);
     }
 }
