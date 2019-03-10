@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -24,7 +26,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -35,5 +38,19 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->hasMany(Project::class, 'owner_id')->latest('updated_at');
+    }
+
+    /**
+     * Get all projects that the user has access to.
+     *
+     * @return mixed
+     */
+    public function accessibleProjects()
+    {
+        return Project::where('owner_id', $this->id)
+            ->orWhereHas('members', function ($query) {
+                $query->where('user_id', $this->id);
+            })
+            ->get();
     }
 }
