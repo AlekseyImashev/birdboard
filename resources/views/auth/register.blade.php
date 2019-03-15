@@ -23,7 +23,7 @@
         </div>
 
         <div class="field mb-6">
-            <label class="text-sm mb-2 block" for="email">Email Address</label>
+            <label class="label text-sm mb-2 block" for="email">Email Address</label>
 
             <div class="control">
                 <input id="email"
@@ -48,7 +48,7 @@
         </div>
 
         <div class="field mb-6">
-            <label class="label text-sm mb-2 block" for="password-confirmation">Confrim Password</label>
+            <label class="label text-sm mb-2 block" for="password-confirmation">Confirm Password</label>
 
             <div class="control">
                 <input id="password-confirmation"

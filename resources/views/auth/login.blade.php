@@ -27,7 +27,7 @@
             <div class="control">
                 <input id="password"
                        type="password"
-                       class="input bg-transparent border border-grey-light rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-grey-light rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
                        name="password"
                        required>
             </div>
