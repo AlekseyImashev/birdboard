@@ -1,10 +1,10 @@
 @extends ('layouts.app')
 
-@section ('content')
+@section('content')
     <header class="flex items-center mb-6 pb-4">
         <div class="flex justify-between items-end w-full">
             <p class="text-muted font-light">
-                <a href="/projects" class="text-muted text-sm font-normal no-underline hover:underline">My Projects</a>
+                <a href="/projects" class="text-muted no-underline hover:underline">My Projects</a>
                 / {{ $project->title }}
             </p>
 

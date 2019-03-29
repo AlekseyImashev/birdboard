@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="filed mb-6">
+        <div class="field mb-6">
             <label class="label text-sm mb-2 block" for="password">Password</label>
 
             <div class="control">
@@ -42,7 +42,7 @@
                         {{ old('remember') ? 'checked' : '' }}>
 
                 <label class="text-sm" for="remember">
-                    Remeber Me
+                    Remember Me
                 </label>
             </div>
         </div>
