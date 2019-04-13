@@ -1848,7 +1848,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1856,14 +1855,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: '',
         description: '',
         tasks: [{
-          value: ''
+          body: ''
         }]
       },
       errors: {}
     };
   },
   methods: {
-    AddTask: function AddTask() {
+    addTask: function addTask() {
       this.form.tasks.push({
         value: ''
       });
@@ -37601,7 +37600,7 @@ var render = function() {
     },
     [
       _c("h1", { staticClass: "font-normal mb-16 text-center text-2xl" }, [
-        _vm._v("Let's Start Something New")
+        _vm._v("Let’s Start Something New")
       ]),
       _vm._v(" "),
       _c(
@@ -37719,20 +37718,20 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: task.value,
-                          expression: "task.value"
+                          value: task.body,
+                          expression: "task.body"
                         }
                       ],
                       staticClass:
                         "border border-muted-light mb-2 p-2 text-xs block w-full rounded",
-                      attrs: { type: "text", placeholder: "Task1" },
-                      domProps: { value: task.value },
+                      attrs: { type: "text", placeholder: "Task 1" },
+                      domProps: { value: task.body },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(task, "value", $event.target.value)
+                          _vm.$set(task, "body", $event.target.value)
                         }
                       }
                     })
@@ -37745,7 +37744,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "inline-flex items-center text-xs",
-                  on: { click: _vm.AddTask }
+                  attrs: { type: "button" },
+                  on: { click: _vm.addTask }
                 },
                 [
                   _c(
@@ -37754,8 +37754,8 @@ var render = function() {
                       staticClass: "mr-2",
                       attrs: {
                         xmlns: "http://www.w3.org/2000/svg",
-                        height: "18",
                         width: "18",
+                        height: "18",
                         viewBox: "0 0 18 18"
                       }
                     },
@@ -37764,7 +37764,7 @@ var render = function() {
                         "g",
                         {
                           attrs: {
-                            fill: "#000",
+                            fill: "none",
                             "fill-rule": "evenodd",
                             opacity: ".307"
                           }
@@ -37775,7 +37775,7 @@ var render = function() {
                               stroke: "#000",
                               "stroke-opacity": ".012",
                               "stroke-width": "0",
-                              d: "M-3-3h24H-3z"
+                              d: "M-3-3h24v24H-3z"
                             }
                           }),
                           _vm._v(" "),
@@ -37783,7 +37783,7 @@ var render = function() {
                             attrs: {
                               fill: "#000",
                               d:
-                                "M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10"
+                                "M9 0a9 9 0 0 0-9 9c0 4.97 4.02 9 9 9A9 9 0 0 0 9 0zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11H8v3H5v2h3v3h2v-3h3V8h-3V5z"
                             }
                           })
                         ]
@@ -37802,9 +37802,9 @@ var render = function() {
               "button",
               {
                 staticClass: "button is-outlined mr-4",
+                attrs: { type: "button" },
                 on: {
                   click: function($event) {
-                    $event.preventDefault()
                     _vm.$modal.hide("new-project")
                   }
                 }

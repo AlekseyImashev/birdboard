@@ -1,6 +1,6 @@
 <template>
     <modal name="new-project" classes="p-10 bg-card rounded-lg" height="auto">
-        <h1 class="font-normal mb-16 text-center text-2xl">Let's Start Something New</h1>
+        <h1 class="font-normal mb-16 text-center text-2xl">Let’s Start Something New</h1>
 
         <form @submit.prevent="submit">
             <div class="flex">
@@ -37,17 +37,16 @@
                         <input
                             type="text"
                             class="border border-muted-light mb-2 p-2 text-xs block w-full rounded"
-                            placeholder="Task1"
+                            placeholder="Task 1"
                             v-for="task in form.tasks"
-                            v-model="task.value">
+                            v-model="task.body">
                     </div>
 
-                    <button class="inline-flex items-center text-xs" @click="AddTask">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 18 18" class="mr-2">
-                            <g fill="#000" fill-rule="evenodd" opacity=".307">
-                                <path stroke="#000" stroke-opacity=".012" stroke-width="0" d="M-3-3h24H-3z"></path>
-                                <path fill="#000"
-                                      d="M14.613,10c0,0.23-0.188,0.419-0.419,0.419H10.42v3.774c0,0.23-0.189,0.42-0.42,0.42s-0.419-0.189-0.419-0.42v-3.774H5.806c-0.23,0-0.419-0.189-0.419-0.419s0.189-0.419,0.419-0.419h3.775V5.806c0-0.23,0.189-0.419,0.419-0.419s0.42,0.189,0.42,0.419v3.775h3.774C14.425,9.581,14.613,9.77,14.613,10 M17.969,10c0,4.401-3.567,7.969-7.969,7.969c-4.402,0-7.969-3.567-7.969-7.969c0-4.402,3.567-7.969,7.969-7.969C14.401,2.031,17.969,5.598,17.969,10 M17.13,10c0-3.932-3.198-7.13-7.13-7.13S2.87,6.068,2.87,10c0,3.933,3.198,7.13,7.13,7.13S17.13,13.933,17.13,10"></path>
+                    <button type="button" class="inline-flex items-center text-xs" @click="addTask">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" class="mr-2">
+                            <g fill="none" fill-rule="evenodd" opacity=".307">
+                                <path stroke="#000" stroke-opacity=".012" stroke-width="0" d="M-3-3h24v24H-3z"></path>
+                                <path fill="#000" d="M9 0a9 9 0 0 0-9 9c0 4.97 4.02 9 9 9A9 9 0 0 0 9 0zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11H8v3H5v2h3v3h2v-3h3V8h-3V5z"></path>
                             </g>
                         </svg>
 
@@ -57,7 +56,7 @@
             </div>
 
             <footer class="flex justify-end">
-                <button class="button is-outlined mr-4" @click.prevent="$modal.hide('new-project')">Cancel</button>
+                <button type="button" class="button is-outlined mr-4" @click="$modal.hide('new-project')">Cancel</button>
                 <button class="button">Create Project</button>
             </footer>
         </form>
@@ -72,19 +71,16 @@
                     title: '',
                     description: '',
                     tasks: [
-                        {value: ''},
+                        { body: ''},
                     ]
                 },
-
                 errors: {}
             };
         },
-
         methods: {
-            AddTask() {
+            addTask() {
                 this.form.tasks.push({value: ''});
             },
-
             async submit() {
                 try {
                     location = (await axios.post('/projects', this.form)).data.message;
